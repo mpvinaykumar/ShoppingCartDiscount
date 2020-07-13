@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <form action="#" th:action="@{/}" th:object="${shoppingCartForm}" method="post">
+            <table>
+                <tr>
+                    <td>Customer Type:</td>
+                    <td><input type="text" th:field="*{customerType}" /></td>
+                    <td th:if="${#fields.hasErrors('customerType')}" th:errors="*{customerType}">CustomerType Error</td>
+                </tr>
+                <tr>
+                    <td>Bill Amount:</td>
+                    <td><input type="text" th:field="*{billAmount}" /></td>
+                    <td th:if="${#fields.hasErrors('billAmount')}" th:errors="*{billAmount}">Bill Amount Error</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+        <div th:if="${shoppingCartForm.discount != null}">
+	        <p><label>Purchase Amount: </label><span th:text="${shoppingCartForm.billAmount}">0</span></p>
+	        <p><label>Discount: </label><span th:text="${shoppingCartForm.discount}">0</span></p>
+	        <p><label>Bill Amount: </label><span th:text="${shoppingCartForm.billAmount - shoppingCartForm.discount}">0</span></p>
+	    </div>
+	    <div th:unless="${shoppingCartForm.discount != null}">
+	        <p>Please enter valid Customer Type</p>
+	    </div>
+    </body>
+</html>
