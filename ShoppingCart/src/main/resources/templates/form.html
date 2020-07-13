@@ -22,8 +22,8 @@
 	        <p><label>Discount: </label><span th:text="${shoppingCartForm.discount}">0</span></p>
 	        <p><label>Bill Amount: </label><span th:text="${shoppingCartForm.billAmount - shoppingCartForm.discount}">0</span></p>
 	    </div>
-	    <div th:unless="${shoppingCartForm.discount != null}">
+	    <!-- <div th:unless="${shoppingCartForm.discount != null}">
 	        <p>Please enter valid Customer Type</p>
-	    </div>
+	    </div> -->
     </body>
 </html>
